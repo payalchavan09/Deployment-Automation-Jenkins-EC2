@@ -40,3 +40,5 @@ build/
 # to change depending on the environment.
 *.tfvars
 
+*.terraform
+
