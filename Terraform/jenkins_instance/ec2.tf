@@ -36,17 +36,3 @@ resource "aws_instance" "jenkins_ec2_instance" {
     volume_size = var.volume_size
   }
 }
-
-resource "aws_eip" "jenkins_eip" {
-  count = var.instance_count
-  # Attaching it to the jenkins_server EC2 instance
-  instance = aws_instance.jenkins_ec2_instance.*.id[count.index]
-
-  # Making sure it is inside the VPC
-  domain = "vpc"
-
-  # Setting the tag Name to jenkins_eip
-  tags = {
-    Name = "jenkins_eip"
-  }
-}
