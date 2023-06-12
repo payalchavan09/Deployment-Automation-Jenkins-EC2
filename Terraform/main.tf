@@ -8,6 +8,7 @@ module "networking" {
   public_cidrs    = [for i in range(2, 6, 2) : cidrsubnet(local.vpc_cidr, 8, i)]
 }
 
+
 module "compute" {
   source              = "./compute"
   public_sg           = module.networking.public_sg
