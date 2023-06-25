@@ -5,20 +5,20 @@ pipeline {
         jdk 'Java 11'
     }
     stages {
-        stage('---clean---') {
+        stage('Build stage') {
             steps {
-                sh "mvn clean"
-            }
-        }
-        stage('--test--') {
-            steps {
-                sh "mvn test"
-            }
-        }
-        stage('--package--') {
-            steps {
+                sh "mvn clean",
+                sh "mvn test",
                 sh "mvn package"
             }
+
+        stage('Build docker') {
+                dockerImage = docker.build("springboot-deploy:${env.BUILD_NUMBER}")
+          }
+        stage('Run docker container') {
+                docker ps -q --filter ancestor=$dockerImage | xargs -r docker stop
+                docker run -d -p 8080:8080 $dockerImage 
+          }
         }
     }
 }
