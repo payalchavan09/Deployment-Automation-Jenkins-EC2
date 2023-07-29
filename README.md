@@ -16,6 +16,19 @@ Deploy simple Spring Boot Hello World application on EC2 using Terraform and Jen
     Link: http://IPv4 public_IP:8080 
    - Login using Administrative password
 
+5. Install Docker on the EC2 instance:
+
+curl -sSL https://get.docker.com/ | sh
+
+# Add your user to the docker group.
+sudo usermod -aG docker ${USER}
+
+# start docker engine
+sudo service docker start
+
+# If permission denied:
+sudo chmod 666 /var/run/docker.soc   
+
 
 
 
