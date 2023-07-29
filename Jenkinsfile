@@ -4,13 +4,17 @@ pipeline {
         stage('Build docker') {
             steps
             {
-                sh 'docker build -t myfile .'
+                script{
+                    sh "docker build -t myfile ."
+                }
             }
           }
         stage('Run docker container') {
             steps
             {
-                sh 'docker run -d -p 8080:8080 myfile'
+                script{
+                    sh "docker run -d -p 8080:8080 myfile"
+                }
             }
           }
         }
