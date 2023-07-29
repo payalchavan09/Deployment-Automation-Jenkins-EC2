@@ -5,13 +5,10 @@ WORKDIR /usr/src/app
 COPY ./ /usr/src/app
 RUN mvn clean install -DskipTests
 
-
-# Docker Build Stage
 FROM openjdk:11
 
 COPY --from=build /usr/src/app/target/*.jar app.jar
 
-ENV PORT 8080
-EXPOSE $PORT
+EXPOSE 8080
 
-ENTRYPOINT ["java","-jar","-Dserver.port=${PORT}","app.jar"]
+ENTRYPOINT ["java","-jar","app.jar"]
