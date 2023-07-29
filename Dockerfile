@@ -3,7 +3,7 @@ FROM maven:3.6.3-jdk-11 AS build
 WORKDIR /usr/src/app
 
 COPY ./ /usr/src/app
-RUN mvn clean package -X
+RUN mvn clean package
 
 FROM openjdk:11
 
