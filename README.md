@@ -27,7 +27,7 @@ sudo usermod -aG docker ${USER}
 sudo service docker start
 
 # If permission denied:
-sudo chmod 666 /var/run/docker.soc   
+sudo chmod 666 /var/run/docker.sock   
 
 
 
