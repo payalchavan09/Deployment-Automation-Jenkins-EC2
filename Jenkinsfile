@@ -1,17 +1,6 @@
 pipeline {
     agent any
-    tools {
-        maven 'Maven 3.9.2'
-        jdk 'Java 11'
-    }
     stages {
-        stage('Build stage') {
-            steps {
-                sh "mvn clean",
-                sh "mvn test",
-                sh "mvn package"
-            }
-
         stage('Build docker') {
                 dockerImage = docker.build("springboot-deploy:${env.BUILD_NUMBER}")
           }
@@ -21,4 +10,3 @@ pipeline {
           }
         }
     }
-}
