@@ -28,11 +28,3 @@ sudo service docker start
 
 # If permission denied:
 sudo chmod 666 /var/run/docker.sock   
-
-
-
-
-
-
-
-STAGE III: Create another EC2 instance in AWS on which Jenkins is to be installed using Bash script
